@@ -6,28 +6,47 @@
 /*   By: egache <egache@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 14:14:11 by egache            #+#    #+#             */
-/*   Updated: 2024/12/02 18:34:41 by egache           ###   ########.fr       */
+/*   Updated: 2024/12/03 05:17:40 by egache           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "get_next_line.h"
+#include "get_next_line.h"
 
-#define BUFFER_SIZE 10
+#define BUFFER_SIZE 1
 
 char	*get_next_line(int fd)
 {
-	static char	*buffer;
-	int	fd_read;
+	static char	buffer[BUFFER_SIZE + 1];
+	char		*str;
+	int			fd_read;
 
-	// //buffer = malloc((BUFFER_SIZE + 1) * sizeof(char));
-	// if (!buffer)
-	// {
-	// 	return (NULL);
-	// }
-	buffer[BUFFER_SIZE + 1] = '\0';
-	while (fd_read != 0)
+	buffer[0] = '\0';
+	fd_read = 1;
+	if (fd < 0 || BUFFER_SIZE <= 0)
+		return (NULL);
+	str = malloc((BUFFER_SIZE + 1) * sizeof(char));
+	if (!str)
+		return (NULL);
+	str[0] = '\0';
+	while (fd_read > 0 && ft_checkbl(buffer) == 0)
 	{
-
-
+		fd_read = read(fd, buffer, BUFFER_SIZE);
+		str = ft_strjoin(str, buffer);
+	}
+	return (str);
 }
+
+#include <fcntl.h>
+
+int	main(void)
+{
+	int		fd;
+	char	*result;
+
+	fd = open("test.txt", O_RDONLY);
+	// printf("%s", get_next_line(fd));
+	result = get_next_line(fd);
+	printf("result : %s\n", result);
+	free(result);
+	return (0);
 }
