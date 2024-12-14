@@ -6,7 +6,7 @@
 /*   By: egache <egache@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 22:48:25 by egache            #+#    #+#             */
-/*   Updated: 2024/12/03 05:17:30 by egache           ###   ########.fr       */
+/*   Updated: 2024/12/13 18:23:00 by egache           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ char	*ft_strjoin(char *str, char *buffer)
 		len++;
 	if (buffer[len] == '\n')
 		len++;
-	printf("len = %d\n", len);
+	printf("\nlen = %d\n", len);
 	join = malloc((len + 1) * sizeof(char));
 	if (!join)
 		return (NULL);
@@ -61,7 +61,7 @@ char	*ft_strjoin(char *str, char *buffer)
 		ft_strcat(join, str);
 		ft_strcat(join, buffer);
 	free(str);
-	printf("buffer step by step apres ft_join : %s\n", buffer);
+	printf("\nbuffer step by step apres ft_join : %s\n", buffer);
 	printf("join step by step apres ft_join : %s\n", join);
 	return (join);
 }
