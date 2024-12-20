@@ -6,13 +6,13 @@
 /*   By: egache <egache@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 22:48:25 by egache            #+#    #+#             */
-/*   Updated: 2024/12/13 18:23:00 by egache           ###   ########.fr       */
+/*   Updated: 2024/12/20 03:11:37 by egache           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-int	ft_strlen(const char *str)
+size_t	ft_strlen(char *str)
 {
 	size_t	i;
 
@@ -44,25 +44,23 @@ char	*ft_strcat(char *dest, char *src)
 char	*ft_strjoin(char *str, char *buffer)
 {
 	char	*join;
-	int		len;
+	size_t	len;
+	size_t	i;
+	size_t	j;
 
+	i = 0;
+	j = 0;
 	len = ft_strlen(str);
 	while (buffer[len] != '\n' && buffer[len])
 		len++;
 	if (buffer[len] == '\n')
 		len++;
-	printf("\nlen = %d\n", len);
 	join = malloc((len + 1) * sizeof(char));
 	if (!join)
 		return (NULL);
 	join[0] = '\0';
-	printf("buffer step by step avant ft_join : %s\n", buffer);
-	printf("join step by step avant ft_join : %s\n", join);
-		ft_strcat(join, str);
-		ft_strcat(join, buffer);
-	free(str);
-	printf("\nbuffer step by step apres ft_join : %s\n", buffer);
-	printf("join step by step apres ft_join : %s\n", join);
+	ft_strcat(join, str);
+	ft_strcat(join, buffer);
 	return (join);
 }
 
