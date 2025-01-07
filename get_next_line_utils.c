@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: egache <egache@student.42lyon.fr>          +#+  +:+       +#+        */
+/*   By: teatime <teatime@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 22:48:25 by egache            #+#    #+#             */
-/*   Updated: 2024/12/20 03:11:37 by egache           ###   ########.fr       */
+/*   Updated: 2025/01/07 21:26:57 by teatime          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+#include <string.h>
 
 size_t	ft_strlen(char *str)
 {
@@ -41,26 +42,35 @@ char	*ft_strcat(char *dest, char *src)
 	return (dest);
 }
 
-char	*ft_strjoin(char *str, char *buffer)
+char	*ft_strjoin(char *str, char *buffer, size_t len)
 {
 	char	*join;
-	size_t	len;
+	size_t	str_len;
+	size_t buffer_len;
+	size_t lentotal;
 	size_t	i;
 	size_t	j;
 
 	i = 0;
 	j = 0;
-	len = ft_strlen(str);
-	while (buffer[len] != '\n' && buffer[len])
-		len++;
-	if (buffer[len] == '\n')
-		len++;
-	join = malloc((len + 1) * sizeof(char));
+	str_len = ft_strlen(str);
+	buffer_len = len;
+	lentotal = str_len + buffer_len;
+	join = malloc((lentotal + 1) * sizeof(char));
 	if (!join)
 		return (NULL);
 	join[0] = '\0';
-	ft_strcat(join, str);
-	ft_strcat(join, buffer);
+	while (i < str_len)
+	{
+		join[i] = str[i];
+		i++;
+	}
+	while (j < buffer_len)
+	{
+		join [i + j] = buffer[j];
+		j++;
+	}
+	join[lentotal] = '\0';
 	return (join);
 }
 
