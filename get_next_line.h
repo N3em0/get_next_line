@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: egache <egache@student.42lyon.fr>          +#+  +:+       +#+        */
+/*   By: teatime <teatime@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 14:41:10 by egache            #+#    #+#             */
-/*   Updated: 2024/12/20 02:45:23 by egache           ###   ########.fr       */
+/*   Updated: 2025/01/07 21:14:28 by teatime          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ char			*get_next_line(int fd);
 char			*ft_strdup(const char *src);
 size_t	ft_strlen(char *str);
 char			*ft_strcat(char *dest, char *src);
-char			*ft_strjoin(char *str, char *buffer);
+char			*ft_strjoin(char *str, char *buffer, size_t len);
 int				ft_checkbl(char *str);
 static void		ft_bzero(char *str);
 
