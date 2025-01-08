@@ -6,21 +6,21 @@
 /*   By: teatime <teatime@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 14:14:11 by egache            #+#    #+#             */
-/*   Updated: 2025/01/08 17:58:44 by teatime          ###   ########.fr       */
+/*   Updated: 2025/01/08 20:26:34 by teatime          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 #include <string.h>
 
-#define BUFFER_SIZE 0
+#define BUFFER_SIZE 5
 
 char	*get_next_line(int fd)
 {
 	static char	buffer[BUFFER_SIZE + 1] = "\0";
 	static int 	pos = 0;
 	char		*str;
-	char		*line;
+	char		*tmp;
 	int			fd_read;
 	int	i;
 	int start;
@@ -36,38 +36,29 @@ char	*get_next_line(int fd)
 	str[0] = '\0';
 	while (fd_read >= 0)
 	{
-		printf("buffer avant read : %s\n", buffer);
+		//printf("buffer avant read : %s\n", buffer);
 		if (pos == 0 || buffer[pos] == '\0')
 		{
 			fd_read = read(fd, buffer, BUFFER_SIZE);
+			if (fd_read == 0 && str[0] != '\0')
+				return (str);
 			if (fd_read <= 0)
-			{
-                if (fd_read == 0 && str[0] != '\0')
-					return (str);
-				free(str);
-				return (NULL);
-			}
+				return (free(str), NULL);
+			//printf("fd_read = %d\n", fd_read);
+			//printf("pos = %d\n", pos);
 			buffer[fd_read] = '\0';
 			pos = 0;
 		}
-		printf("buffer apres read : %s\n", buffer);
+		//printf("buffer apres read : %s\n", buffer);
 		start = pos;
-		printf("start             : %d\n", start);
 		while (buffer[pos] != '\n' && buffer[pos] != '\0')
 			pos++;
-		printf("pos apres pos++   : %d\n", pos);
 		len = pos - start;
-		printf("str avant strjoin : %s\n", str);
-		line = ft_strjoin(str, buffer + start, len);
-		if (!line)
-		{
-			free (str);
-			return NULL;
-		}
-		printf("line apres join   : %s\n", line);
-		printf("str apres join    : %s\n\n", str);
+		tmp = ft_strjoin(str, buffer + start, len);
+		if (!tmp)
+			return (free(str), NULL);
 		free (str);
-		str = line;
+		str = tmp;
 		if (buffer[pos] == '\n')
 		{
 			pos++;
