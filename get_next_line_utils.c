@@ -6,7 +6,7 @@
 /*   By: teatime <teatime@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 22:48:25 by egache            #+#    #+#             */
-/*   Updated: 2025/01/07 21:26:57 by teatime          ###   ########.fr       */
+/*   Updated: 2025/01/08 17:13:42 by teatime          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,19 +74,19 @@ char	*ft_strjoin(char *str, char *buffer, size_t len)
 	return (join);
 }
 
-int	ft_checkbl(char *str)
-{
-	int	i;
+// int	ft_checkbl(char *str)
+// {
+// 	int	i;
 
-	i = 0;
-	while (str[i])
-	{
-		if (str[i] == '\n')
-			return (1);
-		i++;
-	}
-	return (0);
-}
+// 	i = 0;
+// 	while (str[i])
+// 	{
+// 		if (str[i] == '\n')
+// 			return (1);
+// 		i++;
+// 	}
+// 	return (0);
+// }
 
 // char	*ft_remove(char *buffer)
 // {
