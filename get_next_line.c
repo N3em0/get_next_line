@@ -6,14 +6,14 @@
 /*   By: teatime <teatime@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 14:14:11 by egache            #+#    #+#             */
-/*   Updated: 2025/01/07 21:44:59 by teatime          ###   ########.fr       */
+/*   Updated: 2025/01/08 17:58:44 by teatime          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 #include <string.h>
 
-#define BUFFER_SIZE 10000
+#define BUFFER_SIZE 0
 
 char	*get_next_line(int fd)
 {
@@ -36,7 +36,6 @@ char	*get_next_line(int fd)
 	str[0] = '\0';
 	while (fd_read >= 0)
 	{
-		printf("\nfd_read avant read : %d\n", fd_read);
 		printf("buffer avant read : %s\n", buffer);
 		if (pos == 0 || buffer[pos] == '\0')
 		{
@@ -44,28 +43,29 @@ char	*get_next_line(int fd)
 			if (fd_read <= 0)
 			{
                 if (fd_read == 0 && str[0] != '\0')
-                    return (str);
-				printf("\nfree et bzero\n");
+					return (str);
 				free(str);
 				return (NULL);
 			}
 			buffer[fd_read] = '\0';
 			pos = 0;
 		}
-		printf("fd_read : %d\n", fd_read);
-		printf("buffer : %s\n", buffer);
+		printf("buffer apres read : %s\n", buffer);
 		start = pos;
-		printf("start: %d\n", start);
+		printf("start             : %d\n", start);
 		while (buffer[pos] != '\n' && buffer[pos] != '\0')
 			pos++;
+		printf("pos apres pos++   : %d\n", pos);
 		len = pos - start;
+		printf("str avant strjoin : %s\n", str);
 		line = ft_strjoin(str, buffer + start, len);
 		if (!line)
 		{
 			free (str);
 			return NULL;
 		}
-		printf("str : %s\n", str);
+		printf("line apres join   : %s\n", line);
+		printf("str apres join    : %s\n\n", str);
 		free (str);
 		str = line;
 		if (buffer[pos] == '\n')
@@ -86,9 +86,9 @@ int	main(int argc, char **argv)
 	fd = open(argv[1], O_RDONLY);
 	while ((result = get_next_line(fd)) != NULL)
 	{
-		printf("\n--------------------------\n");
+		printf("\n-----------------------------\n");
 		printf("get_next_line : %s\n", result);
-		printf("--------------------------\n");
+		printf("-----------------------------\n\n");
 		free(result);
 	}
 	printf("done\n");
