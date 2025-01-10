@@ -6,7 +6,7 @@
 /*   By: teatime <teatime@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 14:41:10 by egache            #+#    #+#             */
-/*   Updated: 2025/01/10 01:53:20 by teatime          ###   ########.fr       */
+/*   Updated: 2025/01/10 13:12:34 by teatime          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ size_t	ft_strlen(char *str);
 char			*ft_strjoin(char *str, char *buffer, size_t len);
 // int				ft_checkbl(char *str);
 // static void		ft_bzero(char *str);
-char *ft_fill   (char *str, char *buffer, int pos, int len);
+char *ft_fill   (char *str, char *buffer, int len);
+char	*ft_line(char *str, char *buffer, int fd_read, int fd);
 
 #endif
