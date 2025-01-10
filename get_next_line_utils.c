@@ -6,7 +6,7 @@
 /*   By: teatime <teatime@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 22:48:25 by egache            #+#    #+#             */
-/*   Updated: 2025/01/08 17:13:42 by teatime          ###   ########.fr       */
+/*   Updated: 2025/01/09 18:23:51 by teatime          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,21 +55,17 @@ char	*ft_strjoin(char *str, char *buffer, size_t len)
 	j = 0;
 	str_len = ft_strlen(str);
 	buffer_len = len;
+	if (buffer[buffer_len] == '\n')
+		buffer_len += 1;
 	lentotal = str_len + buffer_len;
 	join = malloc((lentotal + 1) * sizeof(char));
 	if (!join)
 		return (NULL);
 	join[0] = '\0';
 	while (i < str_len)
-	{
-		join[i] = str[i];
-		i++;
-	}
+		join[i++] = str[i];
 	while (j < buffer_len)
-	{
-		join [i + j] = buffer[j];
-		j++;
-	}
+		join [i + j++] = buffer[j];
 	join[lentotal] = '\0';
 	return (join);
 }
