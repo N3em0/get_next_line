@@ -1,2 +1,5 @@
 .vscode/c_cpp_properties.json
 a.out
+test.txt
+files/
+.gitignore

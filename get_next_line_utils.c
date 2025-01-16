@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: teatime <teatime@student.42.fr>            +#+  +:+       +#+        */
+/*   By: egache <egache@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 22:48:25 by egache            #+#    #+#             */
-/*   Updated: 2025/01/10 15:16:38 by teatime          ###   ########.fr       */
+/*   Updated: 2025/01/16 10:48:43 by egache           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ size_t	ft_strlen(char *str)
 	return (i);
 }
 
-char	*ft_strjoin(char *str, char *buffer, size_t len)
+char	*ft_strnjoin(char *str, char *buffer, size_t len)
 {
 	char	*join;
 	size_t	str_len;
