@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: teatime <teatime@student.42.fr>            +#+  +:+       +#+        */
+/*   By: egache <egache@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 14:14:11 by egache            #+#    #+#             */
-/*   Updated: 2025/01/10 15:17:27 by teatime          ###   ########.fr       */
+/*   Updated: 2025/01/16 10:49:41 by egache           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ char	*ft_fill(char *str, char *buffer, int len)
 	int		i;
 
 	i = 0;
-	tmp = ft_strjoin(str, buffer, len);
+	tmp = ft_strnjoin(str, buffer, len);
 	if (!tmp)
 		return (free(str), NULL);
 	while (tmp[i] && tmp[i] != '\n')
@@ -74,7 +74,7 @@ char	*ft_fill(char *str, char *buffer, int len)
 	if (buffer[len] == '\n')
 		tmp[i++] = '\n';
 	tmp[i] = '\0';
-	free (str);
+	free(str);
 	return (tmp);
 }
 // #include <fcntl.h>
