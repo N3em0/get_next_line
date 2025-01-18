@@ -6,7 +6,7 @@
 /*   By: egache <egache@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 14:41:10 by egache            #+#    #+#             */
-/*   Updated: 2025/01/16 10:48:55 by egache           ###   ########.fr       */
+/*   Updated: 2025/01/18 13:59:04 by egache           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 # define GET_NEXT_LINE_H
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 5
+#  define BUFFER_SIZE 42
 # endif
 
-# include "stdlib.h"
-# include "unistd.h"
+# include <stdlib.h>
+# include <unistd.h>
 
 char	*get_next_line(int fd);
 size_t	ft_strlen(char *str);

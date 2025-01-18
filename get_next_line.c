@@ -6,7 +6,7 @@
 /*   By: egache <egache@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 14:14:11 by egache            #+#    #+#             */
-/*   Updated: 2025/01/16 15:16:23 by egache           ###   ########.fr       */
+/*   Updated: 2025/01/18 15:45:44 by egache           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,23 +77,3 @@ char	*ft_fill(char *str, char *buffer, int len)
 	free(str);
 	return (tmp);
 }
-// #include <fcntl.h>
-// #include <stdio.h>
-
-// int	main(int argc, char **argv)
-// {
-// 	int		fd;
-// 	char	*result;
-
-// 	fd = open(argv[1], O_RDONLY);
-// 	while ((result = get_next_line(fd)) != NULL)
-// 	{
-// 		printf("\n-----------------------------\n");
-// 		printf("get_next_line : %s", result);
-// 		printf("-----------------------------\n\n");
-// 		free(result);
-// 	}
-// 	printf("done\n");
-// 	close(fd);
-// 	return (0);
-// }
