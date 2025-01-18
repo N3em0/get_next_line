@@ -6,12 +6,11 @@
 /*   By: egache <egache@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 22:48:25 by egache            #+#    #+#             */
-/*   Updated: 2025/01/16 10:48:43 by egache           ###   ########.fr       */
+/*   Updated: 2025/01/18 13:51:25 by egache           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-#include <string.h>
 
 size_t	ft_strlen(char *str)
 {
