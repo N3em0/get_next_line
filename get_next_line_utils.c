@@ -6,7 +6,7 @@
 /*   By: egache <egache@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 22:48:25 by egache            #+#    #+#             */
-/*   Updated: 2025/01/18 13:51:25 by egache           ###   ########.fr       */
+/*   Updated: 2025/01/20 19:20:41 by egache           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ char	*ft_strnjoin(char *str, char *buffer, size_t len)
 	if (!join)
 		return (NULL);
 	join[0] = '\0';
-	while (++i < str_len)
+	while (str[++i])
 		join[i] = str[i];
 	while (++j < len)
 		join[i + j] = buffer[j];

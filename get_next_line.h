@@ -6,7 +6,7 @@
 /*   By: egache <egache@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 14:41:10 by egache            #+#    #+#             */
-/*   Updated: 2025/01/18 13:59:04 by egache           ###   ########.fr       */
+/*   Updated: 2025/01/24 15:46:12 by egache           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define GET_NEXT_LINE_H
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 42
+#  define BUFFER_SIZE 150
 # endif
 
 # include <stdlib.h>
