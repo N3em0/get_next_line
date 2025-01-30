@@ -6,7 +6,7 @@
 /*   By: egache <egache@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 14:14:11 by egache            #+#    #+#             */
-/*   Updated: 2025/01/18 15:45:44 by egache           ###   ########.fr       */
+/*   Updated: 2025/01/30 17:00:50 by egache           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 char	*get_next_line(int fd)
 {
-	static char	buffer[BUFFER_SIZE + 1] = "\0";
+	static char	buffer[BUFFER_SIZE + 1];
 	char		*str;
 	int			fd_read;
 
@@ -36,9 +36,9 @@ char	*ft_line(char *str, char *buffer, int fd_read, int fd)
 	int			start;
 	static int	pos = 0;
 
-	while (fd_read >= 0)
+	while (1)
 	{
-		if (pos == 0 || buffer[pos] == '\0')
+		if (buffer[pos] == '\0')
 		{
 			fd_read = read(fd, buffer, BUFFER_SIZE);
 			if (fd_read == 0 && str[0] != '\0')
