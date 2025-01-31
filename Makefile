@@ -6,47 +6,64 @@
 #    By: egache <egache@student.42lyon.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/24 14:29:30 by egache            #+#    #+#              #
-#    Updated: 2025/01/24 15:47:53 by egache           ###   ########.fr        #
+#    Updated: 2025/01/31 01:04:18 by egache           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-HEAD	=	get_next_line.h
+HEAD			:=	get_next_line.h
 
-NAME	=	libftgnl.a
+NAME			:=	libgnl.a
 
-EXE		=	get_next_line
+SRC				=				\
+	get_next_line.c				\
+	get_next_line_utils.c		\
 
-SRCS	=	get_next_line.c\
-			get_next_line_utils.c\
+SRC_DIR			:=	src
+SRC				:=	$(SRC:%=$(SRC_DIR)/%)
 
-#MAIN	=	main.c
+BUILD_DIR		:=	.build
+OBJ				:=	$(SRC:$(SRC_DIR)/%.c=$(BUILD_DIR)/%.o)
+DEP				:=	$(OBJ:%.o=.d)
 
-OBJS	=	${SRCS:%.c=%.o}
+CC				:=	cc
 
-CC	=	cc
+AR				:=	ar -rcs
 
-AR	=	ar -rc
+CFLAGS			:=	-Wall -Wextra -Werror
 
-FLAGS	=	-Wall -Wextra -Werror
+MAKEFLAGS		+=	--no-print-directory
 
-all	:	${NAME}
+INCLUDE			:=	-MMD -MP -Iinclude
 
-${OBJS} :   %.o : %.c ${HEAD} Makefile
-	${CC} ${FLAGS} -c $< -o $@
+DIR_DUP			=	mkdir -p $(@D)
 
-#${EXE}	:	${OBJS}
-#	${CC} ${FLAGS} ${OBJS} ${MAIN} -o ${EXE}
+RM				:=	rm -f
 
-${NAME}	:	${OBJS}
-	${AR} ${NAME} ${OBJS}
+RMF				:=	rm -rf
 
-#exe	:	${EXE}
+all				:	$(NAME)
 
-clean	:
-	rm -rf ${OBJS}
+$(NAME)			:	$(OBJ)
+			$(AR) $(NAME) $(OBJ)
+			$(info CREATED $(NAME))
 
-fclean	:	clean
-	rm -f ${NAME} ${EXE}
-re	:	fclean all
+$(BUILD_DIR)/%.o: $(SRC_DIR)/%.c
+			$(DIR_DUP)
+			$(CC) $(CFLAGS) $(INCLUDE) -c -o $@ $<
+			$(info CREATED $@)
 
-.PHONY	:	all clean fclean re
+-include	$(DEP)
+
+clean 			:
+			$(RMF) $(BUILD_DIR)
+
+fclean			:	clean
+			$(RM) $(NAME)
+
+re				:
+			$(MAKE) fclean
+			$(MAKE) all
+
+.PHONY			:	all clean fclean re
+
+.silent			:
