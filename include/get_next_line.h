@@ -6,7 +6,7 @@
 /*   By: egache <egache@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 14:41:10 by egache            #+#    #+#             */
-/*   Updated: 2025/01/24 15:46:12 by egache           ###   ########.fr       */
+/*   Updated: 2025/02/05 11:49:55 by egache           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 # include <unistd.h>
 
 char	*get_next_line(int fd);
-size_t	ft_strlen(char *str);
+size_t	ft_strlen(const char *str);
 char	*ft_strnjoin(char *str, char *buffer, size_t len);
 char	*ft_fill(char *str, char *buffer, int len);
 char	*ft_line(char *str, char *buffer, int fd_read, int fd);
