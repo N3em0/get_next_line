@@ -6,11 +6,11 @@
 /*   By: egache <egache@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 14:14:11 by egache            #+#    #+#             */
-/*   Updated: 2025/01/30 17:00:50 by egache           ###   ########.fr       */
+/*   Updated: 2025/02/05 11:42:24 by egache           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "../include/get_next_line.h"
 
 char	*get_next_line(int fd)
 {
